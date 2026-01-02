@@ -1,4 +1,4 @@
-package com.harshit.NanoLinkWriter.dto;
+package com.harshit.NanoLinkGenerator.dto;
 
 import lombok.Data;
 

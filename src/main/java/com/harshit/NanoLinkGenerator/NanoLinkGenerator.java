@@ -1,4 +1,4 @@
-package com.harshit.NanoLinkWriter;
+package com.harshit.NanoLinkGenerator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 @EnableAsync
 @SpringBootApplication
-public class NanoLinkWriterApplication {
+public class NanoLinkGenerator {
 
 	public static void main(String[] args) {
-		SpringApplication.run(NanoLinkWriterApplication.class, args);
+		SpringApplication.run(NanoLinkGenerator.class, args);
 	}
 
 }

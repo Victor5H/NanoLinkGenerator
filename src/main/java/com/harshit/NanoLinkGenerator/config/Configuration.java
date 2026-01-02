@@ -1,4 +1,4 @@
-package com.harshit.NanoLinkWriter.config;
+package com.harshit.NanoLinkGenerator.config;
 
 
 import org.springframework.context.annotation.Bean;

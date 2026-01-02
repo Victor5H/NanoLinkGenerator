@@ -1,6 +1,6 @@
 spring:
   application:
-    name: NanoLinkWriter
+    name: NanoLinkGenerator
   data:
     redis:
       host: localhost
@@ -17,9 +17,21 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   kafka:
-    producer:
-      key-serializer: org.
+    bootstrap-servers: pkc-41p56.asia-south1.gcp.confluent.cloud:9092
 
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: nanoLinkTopic
+      key-serializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-serializer: org.apache.kafka.common.serialization.StringDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              package:
+                com.harshit.NanoLinkWriter.model
     properties:
       session:
         timeout:
@@ -29,8 +41,7 @@ spring:
       sasl:
         mechanism: PLAIN
         jaas:
-          config=org.apache.kafka.common.security.plain.PlainLoginModule required username='3IE23ZGYFSWOT4QW' password='cfltvWm8pKCB0xqvDnWr1SJqZkGKhEcnJNh9Nf0YQI03tB9eKrvYerB1i/6GzZZQ';
-    bootstrap-servers: pkc-41p56.asia-south1.gcp.confluent.cloud:9092
+          config: org.apache.kafka.common.security.plain.PlainLoginModule required username='3IE23ZGYFSWOT4QW' password='cfltvWm8pKCB0xqvDnWr1SJqZkGKhEcnJNh9Nf0YQI03tB9eKrvYerB1i/6GzZZQ';
 
 client:
   id: ccloud-springboot-client-8aa9d2a7-bf08-4a59-805c-af79d1a6daf0

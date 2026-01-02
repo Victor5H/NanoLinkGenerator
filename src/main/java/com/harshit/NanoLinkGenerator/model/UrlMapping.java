@@ -1,4 +1,4 @@
-package com.harshit.NanoLinkWriter.model;
+package com.harshit.NanoLinkGenerator.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

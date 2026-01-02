@@ -1,15 +1,12 @@
-package com.harshit.NanoLinkWriter.service;
+package com.harshit.NanoLinkGenerator.service;
 
-import com.harshit.NanoLinkWriter.dto.UrlMappingDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import tools.jackson.databind.ObjectMapper;
 
-import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
@@ -32,7 +29,7 @@ public class RedisUrlService {
     }
     public void putNew(String longUrl, String shortUrl){
         try {
-            template.opsForValue().set(longUrl,shortUrl, 10, TimeUnit.SECONDS);
+            template.opsForValue().set(longUrl,shortUrl, 10, TimeUnit.MINUTES);
         }
         catch (Exception e){
             logger.error(e.toString());

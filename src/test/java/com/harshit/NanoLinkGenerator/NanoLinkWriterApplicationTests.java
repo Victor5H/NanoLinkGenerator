@@ -1,12 +1,8 @@
-package com.harshit.NanoLinkWriter;
+package com.harshit.NanoLinkGenerator;
 
-import com.harshit.NanoLinkWriter.utility.Base62Encoder;
-import io.netty.handler.codec.base64.Base64Encoder;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigInteger;
-import java.util.Base64;
 import java.util.UUID;
 
 //@SpringBootTest

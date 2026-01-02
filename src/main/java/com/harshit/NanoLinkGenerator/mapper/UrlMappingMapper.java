@@ -1,9 +1,8 @@
-package com.harshit.NanoLinkWriter.mapper;
+package com.harshit.NanoLinkGenerator.mapper;
 
-import com.harshit.NanoLinkWriter.dto.UrlMappingDto;
-import com.harshit.NanoLinkWriter.model.UrlMapping;
+import com.harshit.NanoLinkGenerator.dto.UrlMappingDto;
+import com.harshit.NanoLinkGenerator.model.UrlMapping;
 import org.mapstruct.Mapper;
-import org.springframework.stereotype.Component;
 
 @Mapper(componentModel = "spring")
 public interface UrlMappingMapper{

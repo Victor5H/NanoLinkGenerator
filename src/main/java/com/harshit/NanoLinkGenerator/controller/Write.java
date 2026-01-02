@@ -1,6 +1,6 @@
-package com.harshit.NanoLinkWriter.controller;
+package com.harshit.NanoLinkGenerator.controller;
 
-import com.harshit.NanoLinkWriter.service.UrlMappingService;
+import com.harshit.NanoLinkGenerator.service.UrlMappingService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;

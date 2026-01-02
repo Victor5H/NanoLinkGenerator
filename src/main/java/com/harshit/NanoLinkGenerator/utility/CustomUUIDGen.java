@@ -1,4 +1,4 @@
-package com.harshit.NanoLinkWriter.utility;
+package com.harshit.NanoLinkGenerator.utility;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;

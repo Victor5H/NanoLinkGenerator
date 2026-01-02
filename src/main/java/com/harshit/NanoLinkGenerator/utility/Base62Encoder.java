@@ -1,10 +1,8 @@
-package com.harshit.NanoLinkWriter.utility;
+package com.harshit.NanoLinkGenerator.utility;
 
 import org.springframework.stereotype.Component;
 
 import java.math.BigInteger;
-import java.util.HashMap;
-import java.util.UUID;
 
 @Component
 public class Base62Encoder {

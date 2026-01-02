@@ -1,6 +1,6 @@
-package com.harshit.NanoLinkWriter.repo;
+package com.harshit.NanoLinkGenerator.repo;
 
-import com.harshit.NanoLinkWriter.model.UrlMapping;
+import com.harshit.NanoLinkGenerator.model.UrlMapping;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

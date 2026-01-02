@@ -1,6 +1,6 @@
-package com.harshit.NanoLinkWriter.utility;
+package com.harshit.NanoLinkGenerator.utility;
 
-import com.harshit.NanoLinkWriter.service.RedisCounterService;
+import com.harshit.NanoLinkGenerator.service.RedisCounterService;
 import org.springframework.stereotype.Component;
 
 import java.math.BigInteger;
