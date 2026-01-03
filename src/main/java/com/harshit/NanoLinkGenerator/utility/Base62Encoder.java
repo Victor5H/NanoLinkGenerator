@@ -6,7 +6,7 @@ import java.math.BigInteger;
 
 @Component
 public class Base62Encoder {
-    private final static String SYMBOLS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final String SYMBOLS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static final BigInteger base = BigInteger.valueOf(62);
     private static final BigInteger zero = BigInteger.ZERO;
     public String getEncoded(BigInteger num){

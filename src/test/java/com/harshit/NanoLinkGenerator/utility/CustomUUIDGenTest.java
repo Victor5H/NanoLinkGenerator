@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class CustomUUIDGenTest {
+ class CustomUUIDGenTest {
     @Autowired
     CustomUUIDGen customUUIDGen;
     @Test
-    public void test(){
+     void test(){
         Assertions.assertNotEquals(customUUIDGen.getUniqueId(),customUUIDGen.getUniqueId());
     }
 }
