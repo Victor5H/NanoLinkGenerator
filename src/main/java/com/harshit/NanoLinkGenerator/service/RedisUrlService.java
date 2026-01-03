@@ -14,7 +14,8 @@ import java.util.concurrent.TimeUnit;
 public class RedisUrlService {
     @Autowired
     private RedisTemplate template;
-    Logger logger = LoggerFactory.getLogger(RedisUrlService.class);
+    private static final int time = 10;
+    private static final Logger logger = LoggerFactory.getLogger(RedisUrlService.class);
 
     @Async
     public CompletableFuture<String> checkForLongUrl(String longUrl){
@@ -29,7 +30,7 @@ public class RedisUrlService {
     }
     public void putNew(String longUrl, String shortUrl){
         try {
-            template.opsForValue().set(longUrl,shortUrl, 10, TimeUnit.MINUTES);
+            template.opsForValue().set(longUrl,shortUrl, time, TimeUnit.MINUTES);
         }
         catch (Exception e){
             logger.error(e.toString());

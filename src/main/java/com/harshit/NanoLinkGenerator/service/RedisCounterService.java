@@ -15,7 +15,7 @@ public class RedisCounterService {
     private static final String key= "uidCounter";
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
-    Logger logger = LoggerFactory.getLogger(RedisCounterService.class);
+    private static final Logger logger = LoggerFactory.getLogger(RedisCounterService.class);
 
     @Transactional
     public BigInteger getCounterAndIncrement() {
