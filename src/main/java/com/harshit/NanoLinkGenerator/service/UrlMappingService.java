@@ -20,10 +20,10 @@ import java.util.concurrent.CompletableFuture;
 @AllArgsConstructor
 public class UrlMappingService {
     static {
-        kafkaTopicName = "nanoLinkTopic";
+        KAFKATOPICNAME = "nanoLinkTopic";
         logger= LoggerFactory.getLogger(UrlMappingService.class);
     }
-    private static final String kafkaTopicName;
+    private static final String KAFKATOPICNAME;
     private final KafkaTemplate<String,String> kafkaTemplate;
     private final UrlMappingRepo urlRepo;
     private final ShortenUrlGenerator shortenUrlGenerator;
@@ -61,7 +61,7 @@ public class UrlMappingService {
 //                storing newly generated urls in cache
                 redisUrlService.putNew(longUrl,shortenURL);
                 String json = new ObjectMapper().writeValueAsString(new KafkaPushMsg(longUrl,shortenURL));
-                kafkaTemplate.send(kafkaTopicName,shortenURL,json);
+                kafkaTemplate.send(KAFKATOPICNAME,shortenURL,json);
                 logger.info("pushed into kafka for DB writer");
                 return shortenURL;
             }

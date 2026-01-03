@@ -18,7 +18,7 @@ public class GeneratorController {
     private final UrlMappingService urlService;
 
     @PostMapping("getNano")
-    public ResponseEntity<?> post(@RequestBody @Valid LongUrlRequest longUrlRequest){
+    public ResponseEntity<String> post(@RequestBody @Valid LongUrlRequest longUrlRequest){
         String longUrl = longUrlRequest.getUrl();
         logger.info("Long url {}", longUrl);
         String url =urlService.getUrl(longUrl);
