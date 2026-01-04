@@ -42,6 +42,7 @@ public class UrlMappingService {
         }
     }
     public String getUrl(String longUrl) {
+        String shortURL="";
 //        checking in cache first in async
         CompletableFuture<String> futureRedisCheck = redisUrlService.checkForLongUrl(longUrl);
 //        checking in db
@@ -54,21 +55,20 @@ public class UrlMappingService {
         }
         else if (findInDb.isEmpty()) {
             logger.info("no existing short url, generating short url");
-            String shortenURL = shortenUrlGenerator.getShortenUrl();
-            Optional<UrlMapping> checkShortUrl = urlRepo.findByShortUrl(shortenURL);
-            if(checkShortUrl.isEmpty()){
-                logger.info("unique short url generated");
-//                storing newly generated urls in cache
-                redisUrlService.putNew(longUrl,shortenURL);
-                String json = new ObjectMapper().writeValueAsString(new KafkaPushMsg(longUrl,shortenURL));
-                kafkaTemplate.send(KAFKATOPICNAME,shortenURL,json);
-                logger.info("pushed into kafka for DB writer");
-                return shortenURL;
+            shortURL = shortenUrlGenerator.getShortenUrl();
+            Optional<UrlMapping> checkShortUrl = urlRepo.findByShortUrl(shortURL);
+            if(checkShortUrl.isPresent()){
+                //fallBackLogic
+                logger.info("newly generated short url found in DB");
+                shortURL = fallBackUrlGen.getNewUrl(shortURL);
+                logger.info("fallback short url generated");
             }
-//            fallBackLogic
-            logger.info("newly generated short url found in DB");
-            logger.info("fallback short url generated");
-            return fallBackUrlGen.getNewUrl(shortenURL);
+            logger.info("unique short url generated");
+            redisUrlService.putNew(longUrl,shortURL);
+            String json = new ObjectMapper().writeValueAsString(new KafkaPushMsg(longUrl,shortURL));
+            kafkaTemplate.send(KAFKATOPICNAME,shortURL,json);
+            logger.info("pushed into kafka");
+            return shortURL;
 
         }
         logger.info("existing short url found in DB");
