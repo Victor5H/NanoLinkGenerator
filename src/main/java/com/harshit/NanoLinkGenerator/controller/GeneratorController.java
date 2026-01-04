@@ -1,6 +1,7 @@
 package com.harshit.NanoLinkGenerator.controller;
 
 import com.harshit.NanoLinkGenerator.dto.LongUrlRequest;
+import com.harshit.NanoLinkGenerator.dto.ResponseNanoLink;
 import com.harshit.NanoLinkGenerator.service.UrlMappingService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -13,15 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @AllArgsConstructor
+//@CrossOrigin(origins = "http://localhost:5137")
 public class GeneratorController {
     private static final Logger logger = LoggerFactory.getLogger(GeneratorController.class);
     private final UrlMappingService urlService;
 
     @PostMapping("getNano")
-    public ResponseEntity<String> post(@RequestBody @Valid LongUrlRequest longUrlRequest){
+
+    public ResponseEntity<ResponseNanoLink> post(@RequestBody @Valid LongUrlRequest longUrlRequest){
         String longUrl = longUrlRequest.getUrl();
         logger.info("Long url {}", longUrl);
         String url =urlService.getUrl(longUrl);
-        return ResponseEntity.ok(url);
+        ResponseNanoLink nanoLink = new ResponseNanoLink(url);
+        return ResponseEntity.ok(nanoLink);
     }
 }
